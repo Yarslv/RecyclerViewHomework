@@ -2,9 +2,15 @@ package com.yprodan.recyclerviewhomework
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.yprodan.recyclerviewhomework.databinding.UserItemRecyclerViewBinding
 
-class UserHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(firstName: String, lastName: String, career: String) {
+class UserHolder(private val binding: UserItemRecyclerViewBinding, itemView: View) : RecyclerView.ViewHolder(itemView) {
+    fun bind(firstName: String = "",
+             lastName: String = "",
+             career: String = "") {
 
+        binding.firstNameTextView.text = firstName
+        binding.lastNameTextView.text = lastName
+        binding.careerTextView.text = career
     }
 }

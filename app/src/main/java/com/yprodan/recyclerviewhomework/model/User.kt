@@ -9,4 +9,8 @@ class User (
     private var linkedinRef: String = "",
     private var wkontakteRef: String = "",
     private var avatar: String = "",
-)
+){
+    fun getFirstName() = firstName
+    fun getLastName() = lastName
+    fun getCareer() = career
+}
