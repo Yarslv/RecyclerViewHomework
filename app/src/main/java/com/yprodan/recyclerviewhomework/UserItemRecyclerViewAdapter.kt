@@ -20,7 +20,8 @@ class UserItemRecyclerViewAdapter (private val users: List<User>): RecyclerView.
     }
 
     override fun onBindViewHolder(holder: UserHolder, position: Int) {
-        users[position].apply {
+
+        users[holder.adapterPosition].apply {
             holder.bind(getFirstName(),getLastName(),getCareer(), getAvatar())
         }
 

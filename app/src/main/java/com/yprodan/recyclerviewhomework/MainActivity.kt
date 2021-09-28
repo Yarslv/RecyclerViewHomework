@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yprodan.recyclerviewhomework.databinding.ActivityMainBinding
+import com.yprodan.recyclerviewhomework.model.User
 
 import com.yprodan.recyclerviewhomework.model.UserListViewModel
 import com.yprodan.recyclerviewhomework.model.UserListViewModelFactory
@@ -30,29 +31,44 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    }
-
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-
-        GlobalScope.launch {
-            userList.addUser(
+//        GlobalScope.launch {
+            userList.add(
                 "test6",
                 "test",
                 "test",
-                "https://www.meme-arsenal.com/memes/1db48102eb4085bc911c2fedbf58c578.jpg"
+                "https://www.meme-arsenal.com/memes/3904597739d704ee6d0688119ebeee15.jpg"
             )
-            userList.addUser(
+
+            userList.add(
                 "test3",
                 "test",
                 "test",
-                "https://www.meme-arsenal.com/memes/1db48102eb4085bc911c2fedbf58c578.jpg"
+                "https://www.meme-arsenal.com/memes/3904597739d704ee6d0688119ebeee15.jpg"
+            )
+
+//        }
+
+        binding.btnTest.setOnClickListener {
+            userList.add(
+                "test",
+                "test",
+                "test",
+                "https://www.meme-arsenal.com/memes/3904597739d704ee6d0688119ebeee15.jpg"
             )
         }
 
         userList.getList().observe(this){
             binding.recyclerView.adapter = UserItemRecyclerViewAdapter(it)
+
+//            Log.d("test", it.toString())
+            Log.d("test", "obsrv")
         }
 
-        return super.onCreateView(name, context, attrs)
+        userList.add(
+            "test3",
+            "test",
+            "test",
+            "https://www.meme-arsenal.com/memes/3904597739d704ee6d0688119ebeee15.jpg"
+        )
     }
 }
