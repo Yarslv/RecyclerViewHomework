@@ -31,7 +31,7 @@ class UserListViewModel : ViewModel() {
         Log.d("user", "added")
     }
 
-    fun add(firstName: String = "", lastName: String = "", career: String, imgPath: String) {
+    fun add(firstName: String = "", lastName: String = "", career: String = "", imgPath: String = "") {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 userList.value?.add(
@@ -48,4 +48,16 @@ class UserListViewModel : ViewModel() {
     }
 
     fun getList(): LiveData<ArrayList<User>> = userList
+
+    companion object {
+        var inst:UserListViewModel? = null
+
+        @JvmStatic
+        fun getInstance(): UserListViewModel? {
+            if (inst == null){
+                inst = UserListViewModel()
+            }
+            return inst
+        }
+    }
 }

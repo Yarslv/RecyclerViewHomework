@@ -7,8 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import java.util.ArrayList
 
 class UserListViewModelFactory: ViewModelProvider.Factory {
-
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return UserListViewModel() as T
+        return UserListViewModel.getInstance() as T
     }
 }

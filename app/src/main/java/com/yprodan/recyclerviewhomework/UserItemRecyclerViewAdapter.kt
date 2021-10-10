@@ -11,8 +11,9 @@ import com.yprodan.recyclerviewhomework.model.User
 class UserItemRecyclerViewAdapter (private val users: List<User>): RecyclerView.Adapter<UserHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserHolder {
         UserItemRecyclerViewBinding.bind(LayoutInflater.from(parent.context).inflate(R.layout.user_item_recycler_view, parent, false)).apply {
-            this.root.setOnClickListener {
-                Toast.makeText(parent.context, this.firstNameTextView.text, Toast.LENGTH_LONG).show()
+            this.trashImageView.setOnClickListener {
+
+                Toast.makeText(parent.context, this.firstNameTextView.text, Toast.LENGTH_SHORT).show()
             }
             return UserHolder(this, this.root)
         }
