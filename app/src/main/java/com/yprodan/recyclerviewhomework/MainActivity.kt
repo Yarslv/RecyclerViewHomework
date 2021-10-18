@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yprodan.recyclerviewhomework.databinding.ActivityMainBinding
 
@@ -45,20 +46,29 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        binding.btnTest.setOnClickListener {
-            userList.add(
-                "test",
-                "test",
-                "test",
-                "https://www.meme-arsenal.com/memes/3904597739d704ee6d0688119ebeee15.jpg"
-            )
-
-        }
+//        binding.btnTest.setOnClickListener {
+//            userList.add(
+//                "test",
+//                "test",
+//                "test",
+//                "https://www.meme-arsenal.com/memes/3904597739d704ee6d0688119ebeee15.jpg"
+//            )
+//
+//        }
 
         binding.btnAdd.setOnClickListener {
 //            supportFragmentManager.beginTransaction().add(R.id.cnstrntLt,AddContactFromPhoneBookFragment(), "").commit()
-            supportFragmentManager.beginTransaction().add(R.id.cnstrntLt,AddContactFragment(), "").commit()
+            binding.recyclerView.isClickable = false
+            binding.recyclerView.isVisible = false
+            supportFragmentManager.beginTransaction().add(R.id.cc,AddContactFragment(), "").commit()
 
+        }
+
+        binding.btnTest.setOnClickListener {
+            binding.recyclerView.isClickable = false
+            binding.recyclerView.isVisible = false
+
+            supportFragmentManager.beginTransaction().add(R.id.cc,AddContactFromPhoneBookFragment(), "").commit()
         }
 
         userList.getList().observe(this){
@@ -95,4 +105,9 @@ class MainActivity : AppCompatActivity() {
         Log.d("test", "columns ${profileCursor!!.columnCount}")
     }
 
+    override fun onResume() {
+        binding.recyclerView.isClickable = true
+        binding.recyclerView.isVisible = true
+        super.onResume()
+    }
 }

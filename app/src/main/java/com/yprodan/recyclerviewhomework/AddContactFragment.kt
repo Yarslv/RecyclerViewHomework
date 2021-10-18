@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
@@ -27,6 +28,15 @@ class AddContactFragment : DialogFragment() {
     ): View {
         binding = FragmentAddContactBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onResume() {
+//        super.onResume()
+//        dialog?.onWindowAttributesChanged(dialog?.window?.attributes.apply {
+//            this?.width = WindowManager.LayoutParams.MATCH_PARENT
+//            this?.height = WindowManager.LayoutParams.MATCH_PARENT
+//        })
+        super.onResume()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

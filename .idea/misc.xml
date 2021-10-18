@@ -12,7 +12,8 @@
         <entry key="app/src/main/res/drawable/user_item_rounder.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/contact_item_recycler_view.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_add_contact.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_add_contact.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_add_contact_from_phone.xml" value="0.15" />
         <entry key="app/src/main/res/layout/user_item_recycler_view.xml" value="0.25" />
       </map>
     </option>
