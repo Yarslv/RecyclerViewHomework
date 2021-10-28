@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
 
 
         Log.d("test", "count ${profileCursor!!.count.toString()}")
-        Log.d("test", "columns ${profileCursor!!.columnCount}")
+        Log.d("test", "columns ${profileCursor.columnCount}")
     }
 
     override fun onResume() {

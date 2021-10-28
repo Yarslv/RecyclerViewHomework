@@ -12,6 +12,12 @@ class User(
     private var wkontakteRef: String = "",
     private var avatar: Bitmap? = null,
 ){
+    private var position = 0
+    fun getPosition() = position
+    fun setPosition(pos:Int){
+        position = pos
+    }
+
     fun getFirstName() = firstName
     fun getLastName() = lastName
     fun getCareer() = career
