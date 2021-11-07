@@ -1,3 +1,3 @@
 package com.yprodan.recyclerviewhomework.model
 
-data class Hack(var a:Int = 0)
+data class Hack(var value:Int = 0)

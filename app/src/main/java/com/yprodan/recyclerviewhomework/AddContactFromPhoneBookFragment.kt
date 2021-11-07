@@ -38,13 +38,24 @@ class AddContactFromPhoneBookFragment : DialogFragment() {
         val layoutManager = LinearLayoutManager(context)
         binding.rcclrVw.layoutManager = layoutManager
 
-        binding.rcclrVw.adapter = UserItemRecyclerViewAdapter2(getContacts())
+        var contacts = getContacts()
+
+        binding.rcclrVw.adapter = UserItemRecyclerViewAdapter2(contacts)
         
         binding.imgWvBackArrow.setOnClickListener {
+
+            with(UserListViewModelFactory()
+                .create(UserListViewModel::class.java)
+            ){
+                for(i in contacts){
+                    add(i.getFirstName(), imgPath = "https://24smi.org/public/media/400x248/person/2017/12/28/ck1mq9zla1xl-shrek.jpg")
+                }
+
+            }
 //            UserListViewModelFactory()
 //                .create(UserListViewModel::class.java)
 //                .add(firstName = "testt", imgPath = "https://24smi.org/public/media/400x248/person/2017/12/28/ck1mq9zla1xl-shrek.jpg")
-//            dismiss()
+            dismiss()
         }
         Toast.makeText(context, "ddd",Toast.LENGTH_SHORT).show()
 
@@ -52,9 +63,15 @@ class AddContactFromPhoneBookFragment : DialogFragment() {
     }
 
     override fun onDismiss(dialog: DialogInterface) {
-
+        Toast.makeText(context, "ClosePhoneBook",Toast.LENGTH_SHORT).show()
         super.onDismiss(dialog)
     }
+
+    override fun onDestroy() {
+        Toast.makeText(context, "ClosePhoneBook",Toast.LENGTH_SHORT).show()
+        super.onDestroy()
+    }
+
 
     private fun getContacts(): ArrayList<User> {
         val result = arrayListOf<User>()

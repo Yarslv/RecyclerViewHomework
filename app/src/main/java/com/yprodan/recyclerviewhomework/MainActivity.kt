@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -61,7 +62,6 @@ class MainActivity : AppCompatActivity() {
             binding.recyclerView.isClickable = false
             binding.recyclerView.isVisible = false
             supportFragmentManager.beginTransaction().add(R.id.cc,AddContactFragment(), "").commit()
-
         }
 
         binding.btnTest.setOnClickListener {
@@ -72,9 +72,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         userList.getList().observe(this){
+            binding.recyclerView.isClickable = true
+            binding.recyclerView.isVisible = true
             binding.recyclerView.adapter = UserItemRecyclerViewAdapter(it)
-
-//            Log.d("test", it.toString())
             Log.d("test", "obsrv")
         }
 
@@ -99,13 +99,12 @@ class MainActivity : AppCompatActivity() {
             null
         )
 
-
-
         Log.d("test", "count ${profileCursor!!.count.toString()}")
         Log.d("test", "columns ${profileCursor.columnCount}")
     }
 
     override fun onResume() {
+        Toast.makeText(applicationContext, "main", Toast.LENGTH_SHORT).show()
         binding.recyclerView.isClickable = true
         binding.recyclerView.isVisible = true
         super.onResume()

@@ -14,22 +14,22 @@ import java.util.ArrayList
 
 class UserListViewModel : ViewModel() {
     private var picassoLoader = Picasso.get()
-    private var userList: MutableLiveData<ArrayList<User>> = MutableLiveData(ArrayList())
+    private var userList: MutableLiveData<ArrayList< User>> = MutableLiveData(ArrayList())
 
-    suspend fun addUser(
-        firstName: String = "",
-        lastName: String = "",
-        career: String,
-        imgPath: String
-    ) = withContext(Dispatchers.IO) {
-        userList.value?.add(
-            User(
-                firstName, lastName, career,
-                avatar = picassoLoader.load(imgPath).error(R.drawable.ic_baseline_info_24).get()
-            )
-        )
-        Log.d("user", "added")
-    }
+//    suspend fun addUser(
+//        firstName: String = "",
+//        lastName: String = "",
+//        career: String,
+//        imgPath: String
+//    ) = withContext(Dispatchers.IO) {
+//        userList.value?.add(
+//            User(
+//                firstName, lastName, career,
+//                avatar = picassoLoader.load(imgPath).error(R.drawable.ic_baseline_info_24).get()
+//            )
+//        )
+//        Log.d("user", "added")
+//    }
 
     fun add(firstName: String = "", lastName: String = "", career: String = "", imgPath: String = "") {
         viewModelScope.launch {
@@ -47,7 +47,8 @@ class UserListViewModel : ViewModel() {
         Log.d("test", "add")
     }
 
-    fun getList(): LiveData<ArrayList<User>> = userList
+    fun getList(): LiveData<ArrayList< User>> = userList
+    fun getLength():Int = userList.value!!.size
 
     companion object {
         var inst:UserListViewModel? = null
